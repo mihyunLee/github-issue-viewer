@@ -27,7 +27,11 @@ export default function useInfiniteQuery({ queryKey, queryFn }: IHooksProps) {
   const fetchNextPage = async () => {
     try {
       const res = await queryFn(page);
-      dispatch({ type: 'GET_ISSUE', payload: res });
+      if (page === 1) {
+        dispatch({ type: 'SET_ISSUE', payload: res });
+      } else {
+        dispatch({ type: 'GET_ISSUE', payload: res });
+      }
       setPage((prev) => prev + 1);
       setIsLoading(false);
     } catch (err) {
@@ -43,9 +47,3 @@ export default function useInfiniteQuery({ queryKey, queryFn }: IHooksProps) {
 
   return { data, hasNextPage, fetchNextPage, isLoading, isError };
 }
-
-/** FIXME: 이슈 아이템 클릭 후 뒤로 가기 실행 시 스크롤링하여 추가된 목록 데이터에 다시 1페이지부터의 데이터를 합치게 되어
- * 같은 데이터 리스트가 더해지는 오류가 발생한다.
- *
- * cf. Warning: Encountered two children with the same key
- */
