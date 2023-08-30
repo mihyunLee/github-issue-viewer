@@ -25,6 +25,7 @@ export default function useInfiniteQuery({ queryKey, queryFn }: IHooksProps) {
   }, [data]);
 
   const fetchNextPage = async () => {
+    setIsLoading(true);
     try {
       const res = await queryFn(page);
       if (page === 1) {
