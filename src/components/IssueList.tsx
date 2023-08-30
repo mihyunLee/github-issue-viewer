@@ -1,7 +1,7 @@
 import React from 'react';
-import { useIssueContext } from '../context/issueContext';
 import { IIssue } from '../types';
 import IssueItem from './IssueItem';
+import { useIssueContext } from '../context/issueContext';
 
 export default function IssueList() {
   const { state: issueList } = useIssueContext();

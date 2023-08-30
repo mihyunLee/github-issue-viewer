@@ -1,11 +1,11 @@
 import React from 'react';
 import { createContext, useContext, useReducer } from 'react';
-import { IIssue, IIssueList } from '../types';
+import { IIssueList } from '../types';
 
 // Reducer action type
 type ITodoAction =
   | { type: 'SET_ISSUE'; payload: IIssueList }
-  | { type: 'ADD_ISSUE'; payload: IIssue };
+  | { type: 'GET_ISSUE'; payload: IIssueList };
 
 // Context type
 interface IIssueContext {
@@ -24,8 +24,8 @@ export const issueReducer = (state: IIssueList, action: ITodoAction): IIssueList
   switch (action.type) {
     case 'SET_ISSUE':
       return action.payload;
-    case 'ADD_ISSUE':
-      return [...state, action.payload];
+    case 'GET_ISSUE':
+      return [...state, ...action.payload];
     default:
       return state;
   }

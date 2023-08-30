@@ -1,40 +1,37 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../components/common/Header';
 import { getIssueList } from '../apis/requests';
-import { IIssue, IIssueList } from '../types';
 import { ORGANIZATION_NAME, REPOSITORY_NAME } from '../constants';
-import { useIssueContext } from '../context/issueContext';
 import IssueList from '../components/IssueList';
+import useInfiniteQuery from '../hooks/useInfiniteQuery';
+import useObserver from '../hooks/useObserver';
+import { styled } from 'styled-components';
 
 export default function IssueListPage() {
-  const { dispatch } = useIssueContext();
+  const { hasNextPage, fetchNextPage, isLoading, isError } = useInfiniteQuery({
+    queryKey: 'issueList',
+    queryFn: getIssueList,
+  });
 
-  useEffect(() => {
-    const fetchIssueList = async () => {
-      try {
-        const res = await getIssueList();
-        const issueList: IIssueList = res.map((issue: IIssue) => ({
-          id: issue.id,
-          number: issue.number,
-          title: issue.title,
-          created_at: issue.created_at,
-          user: { login: issue.user.login, avatar_url: issue.user.avatar_url },
-          comments: issue.comments,
-          body: issue.body,
-        }));
+  const observerRef = useObserver({ hasNextPage, fetchNextPage, isLoading });
 
-        dispatch({ type: 'SET_ISSUE', payload: issueList });
-      } catch (err) {
-        console.error('Error fetching issue data:', err);
-      }
-    };
-    fetchIssueList();
-  }, []);
+  if (isLoading) {
+    return <p>로딩중..</p>;
+  }
+
+  if (isError) {
+    return <p>에러발생</p>;
+  }
 
   return (
     <>
       <Header organizationName={ORGANIZATION_NAME} repositoryName={REPOSITORY_NAME} />
       <IssueList />
+      <ObserverTarget ref={observerRef} />
     </>
   );
 }
+
+const ObserverTarget = styled.div`
+  height: 1px;
+`;
