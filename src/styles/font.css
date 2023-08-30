@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'D2 coding';
+  font-style: normal;
+  font-weight: 400;
+  src: url('D2Coding.eot');
+  src:
+    local('※'),
+    local('D2Coding'),
+    url('D2Coding.eot?#iefix') format('embedded-opentype'),
+    url('D2Coding.woff2') format('x-woff2'),
+    url('D2Coding.woff') format('woff'),
+    url('D2Coding.ttf') format('truetype'),
+    url('D2Coding.svg') format('svg');
+}

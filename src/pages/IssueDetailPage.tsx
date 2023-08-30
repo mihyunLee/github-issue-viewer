@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import IssueItem from '../components/IssueItem';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import * as S from '../styles/Layout';
+import styled from 'styled-components';
 
 export default function IssueDetailPage() {
   const { state } = useIssueContext();
@@ -14,12 +16,11 @@ export default function IssueDetailPage() {
   const issueData = state.find((issue) => issue.number === Number(issueId));
 
   return (
-    <>
+    <S.Layout>
       <Header organizationName={ORGANIZATION_NAME} repositoryName={REPOSITORY_NAME} />
       {issueData && (
-        <article>
-          <img src={issueData.user.avatar_url} alt='' />
-          <IssueItem issueData={issueData} />
+        <IssueCard>
+          <IssueItem issueData={issueData} isAuthorImage={true} />
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -28,8 +29,10 @@ export default function IssueDetailPage() {
           >
             {issueData.body}
           </ReactMarkdown>
-        </article>
+        </IssueCard>
       )}
-    </>
+    </S.Layout>
   );
 }
+
+const IssueCard = styled.article``;

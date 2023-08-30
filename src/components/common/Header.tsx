@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 type HeaderProps = {
   organizationName: string;
@@ -10,8 +11,14 @@ export default function Header({
   repositoryName,
 }: HeaderProps): React.ReactElement {
   return (
-    <h1>
+    <Title>
       {organizationName} / {repositoryName}
-    </h1>
+    </Title>
   );
 }
+
+const Title = styled.h1`
+  color: var(--blue);
+  font-size: 32px;
+  text-align: center;
+`;

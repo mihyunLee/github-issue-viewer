@@ -6,6 +6,7 @@ import IssueList from '../components/IssueList';
 import useInfiniteQuery from '../hooks/useInfiniteQuery';
 import useObserver from '../hooks/useObserver';
 import { styled } from 'styled-components';
+import * as S from '../styles/Layout';
 
 export default function IssueListPage() {
   const { hasNextPage, fetchNextPage, isLoading, isError } = useInfiniteQuery({
@@ -24,11 +25,11 @@ export default function IssueListPage() {
   }
 
   return (
-    <>
+    <S.Layout>
       <Header organizationName={ORGANIZATION_NAME} repositoryName={REPOSITORY_NAME} />
       <IssueList />
       <ObserverTarget ref={observerRef} />
-    </>
+    </S.Layout>
   );
 }
 
