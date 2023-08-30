@@ -1,6 +1,6 @@
 export interface IIssue {
   id: number;
-  number: string;
+  number: number;
   title: string;
   user: { login: string; avatar_url: string };
   created_at: string;
