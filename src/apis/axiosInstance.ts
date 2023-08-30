@@ -10,7 +10,7 @@ export const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
   if (!config.headers.Authorization) {
-    config.headers.Authorization = process.env.REACT_APP_GITHUB_TOKEN;
+    config.headers.Authorization = `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`;
   }
   return config;
 });
