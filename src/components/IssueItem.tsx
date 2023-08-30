@@ -20,7 +20,11 @@ export default function IssueItem({ issueData }: IIssueItemProps) {
       </p>
       <span>
         작성자: {issueData.user.login}, 작성일:
-        {new Date(issueData.created_at).toLocaleDateString()}
+        {new Date(issueData.created_at).toLocaleDateString('ko-KR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
       </span>
       <span>코멘트: {issueData.comments}</span>
     </article>
