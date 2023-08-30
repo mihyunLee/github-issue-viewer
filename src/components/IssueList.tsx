@@ -9,7 +9,9 @@ export default function IssueList() {
   return (
     <ul>
       {issueList.map((issueData: IIssue) => (
-        <IssueItem key={issueData.id} issueData={issueData} />
+        <li key={issueData.id}>
+          <IssueItem issueData={issueData} />
+        </li>
       ))}
     </ul>
   );

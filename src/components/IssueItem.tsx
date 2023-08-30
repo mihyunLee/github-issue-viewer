@@ -1,13 +1,20 @@
 import React from 'react';
 import { IIssue } from '../types';
+import { useNavigate } from 'react-router-dom';
 
 interface IIssueItemProps {
   issueData: IIssue;
 }
 
 export default function IssueItem({ issueData }: IIssueItemProps) {
+  const navigate = useNavigate();
+
+  const handleClickIssue = (issueId: number) => {
+    navigate(`/issues/${issueId}`);
+  };
+
   return (
-    <li>
+    <article onClick={() => handleClickIssue(issueData.number)}>
       <p>
         #{issueData.number} {issueData.title}
       </p>
@@ -16,6 +23,6 @@ export default function IssueItem({ issueData }: IIssueItemProps) {
         {new Date(issueData.created_at).toLocaleDateString()}
       </span>
       <span>코멘트: {issueData.comments}</span>
-    </li>
+    </article>
   );
 }
