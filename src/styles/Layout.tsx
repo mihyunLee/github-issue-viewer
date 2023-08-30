@@ -19,7 +19,7 @@ export const Layout = styled.section`
     }
   }
 
-  code {
+  article p code {
     background: rgba(135, 131, 120, 0.15);
     color: #eb5757;
     border-radius: 3px;
