@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import Header from '../components/common/Header';
 import { getIssueList } from '../apis/requests';
 import { IIssue, IIssueList } from '../types';
+import { ORGANIZATION_NAME, REPOSITORY_NAME } from '../constants';
 import { useIssueContext } from '../context/issueContext';
 import IssueList from '../components/IssueList';
 
@@ -31,6 +33,7 @@ export default function IssueListPage() {
 
   return (
     <>
+      <Header organizationName={ORGANIZATION_NAME} repositoryName={REPOSITORY_NAME} />
       <IssueList />
     </>
   );
