@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
 		font-family: 'Pretendard', sans-serif;
 		background-color: var(--black);
 		color: var(--white);
+		margin: 0;
 	}
 	a{
 		text-decoration: none;

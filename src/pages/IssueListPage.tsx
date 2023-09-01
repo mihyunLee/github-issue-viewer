@@ -8,6 +8,7 @@ import useInfiniteQuery from '../hooks/useInfiniteQuery';
 import useObserver from '../hooks/useObserver';
 import { styled } from 'styled-components';
 import * as S from '../styles/Layout';
+import NotFoundPage from './NotFoundPage';
 
 export default function IssueListPage() {
   const { hasNextPage, fetchNextPage, isLoading, isError } = useInfiniteQuery({
@@ -22,7 +23,7 @@ export default function IssueListPage() {
   }
 
   if (isError) {
-    return <p>에러발생</p>;
+    return <NotFoundPage />;
   }
 
   return (
