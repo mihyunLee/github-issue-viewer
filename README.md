@@ -1,11 +1,15 @@
-# Github Issue Check
+# 👀 Github Issue Viewer
+
+<br />
 
 > 원티드 프리온보딩 인턴십 2주차 개인 과제 <br>
-> facebook의 react Repository에서 오픈된 이슈를 체크해볼 수 있는 웹 사이트입니다.
+> facebook의 react Repository에서 오픈된 이슈를 볼 수 있는 웹 사이트입니다.
+
+<br />
 
 <img width="1255" alt="image" src="https://github.com/mihyunLee/github-issue-viewer/assets/51310674/a1c17691-5f9f-4ea5-831a-67b5d3ea363e">
 
-
+<br />
 <br />
 
 # 🚀 Getting Started
