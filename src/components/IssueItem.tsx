@@ -12,7 +12,7 @@ export default function IssueItem({ issueData, isAuthorImage }: IIssueItemProps)
   const navigate = useNavigate();
 
   const handleClickIssue = (issueId: number) => {
-    navigate(`/issues/${issueId}`);
+    navigate(`/issues/${issueId}`, { state: issueData });
   };
 
   return (

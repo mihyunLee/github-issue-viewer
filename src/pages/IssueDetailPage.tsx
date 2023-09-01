@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../components/common/Header';
 import { ORGANIZATION_NAME, REPOSITORY_NAME } from '../constants';
-import { useIssueContext } from '../context/issueContext';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import IssueItem from '../components/IssueItem';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -10,10 +9,7 @@ import * as S from '../styles/Layout';
 import styled from 'styled-components';
 
 export default function IssueDetailPage() {
-  const { state } = useIssueContext();
-  const { id: issueId } = useParams();
-
-  const issueData = state.find((issue) => issue.number === Number(issueId));
+  const issueData = useLocation().state;
 
   return (
     <S.Layout>
